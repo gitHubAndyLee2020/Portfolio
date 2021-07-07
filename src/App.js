@@ -1,23 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import Main from './components/Main'
+import Projects from './components/Projects'
+import About from './components/About'
+import Contact from './components/Contact'
+import Nav from './components/Nav'
+
+import { useSelector } from 'react-redux'
 
 function App() {
+  const pages = useSelector((state) => state.pages)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Nav />
+      {pages === 'main' ? <Main /> : null }
+      {pages === 'projects' ? <Projects /> : null }
+      {pages === 'about' ? <About /> : null }
+      {pages === 'contact' ? <Contact /> : null }
     </div>
   );
 }
